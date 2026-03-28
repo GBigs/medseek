@@ -1,10 +1,7 @@
-﻿"use client";
-
-import {
+﻿import {
   Brain,
   Check,
   ChevronDown,
-  ChevronLeft,
   ChevronRight,
   CreditCard,
   FlaskConical,
@@ -22,11 +19,13 @@ import {
   TriangleAlert,
   X,
 } from "lucide-react";
-import { useRef } from "react";
+import Image from "next/image";
 
 import { Header } from "@/src/components/landing/header";
 import { FaqAccordion } from "@/src/components/landing/faq-accordion";
 import { JourneyCardTabs } from "@/src/components/landing/journey-card-tabs";
+import { SourcesCarousel } from "@/src/components/landing/sources-carousel";
+import { TestimonialsCarousel } from "@/src/components/landing/testimonials-carousel";
 import { BrandWordmark } from "@/src/components/shared/brand-wordmark";
 import { Button } from "@/src/components/shared/button";
 import { Container } from "@/src/components/shared/container";
@@ -49,48 +48,6 @@ const onCallUrgentQuestions = [
 ];
 
 export function LandingPage() {
-  const sourcesCarouselRef = useRef<HTMLDivElement>(null);
-  const testimonialsCarouselRef = useRef<HTMLDivElement>(null);
-
-  const scrollCarouselLoop = (carousel: HTMLDivElement | null, itemSelector: string, direction: "left" | "right") => {
-    if (!carousel) {
-      return;
-    }
-
-    const firstCard = carousel.querySelector<HTMLElement>(itemSelector);
-    if (!firstCard) {
-      return;
-    }
-
-    const styles = getComputedStyle(carousel);
-    const gap = Number.parseFloat(styles.columnGap || styles.gap || "0");
-    const distance = firstCard.getBoundingClientRect().width + gap;
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-    const tolerance = 8;
-
-    if (direction === "right" && carousel.scrollLeft >= maxScroll - tolerance) {
-      carousel.scrollTo({ left: 0, behavior: "smooth" });
-      return;
-    }
-
-    if (direction === "left" && carousel.scrollLeft <= tolerance) {
-      carousel.scrollTo({ left: maxScroll, behavior: "smooth" });
-      return;
-    }
-
-    carousel.scrollBy({
-      left: direction === "right" ? distance : -distance,
-      behavior: "smooth",
-    });
-  };
-
-  const handleSourceScroll = (direction: "left" | "right") => {
-    scrollCarouselLoop(sourcesCarouselRef.current, ".source-card", direction);
-  };
-
-  const handleTestimonialScroll = (direction: "left" | "right") => {
-    scrollCarouselLoop(testimonialsCarouselRef.current, ".testimonial", direction);
-  };
 
   return (
     <>
@@ -221,12 +178,12 @@ export function LandingPage() {
 
                       <article className="message message-ai">
                         <div className="demo-response-scroll">
-                          <h4>🚨 Manejo Inicial do Paciente com Traumatismo Cranioencefálico (TCE) Grave</h4>
+                          <p className="demo-response-title">🚨 Manejo Inicial do Paciente com Traumatismo Cranioencefálico (TCE) Grave</p>
                           <p>
                             O manejo inicial do paciente com TCE grave é uma emergência médica que requer abordagem
                             sistematizada e rápida para prevenir lesões cerebrais secundárias.
                           </p>
-                          <h5>🩺 Avaliação Inicial e Suporte Básico</h5>
+                          <p className="demo-response-subtitle">🩺 Avaliação Inicial e Suporte Básico</p>
                           <ul>
                             <li>
                               <strong>A (Via aérea):</strong> garantir via aérea pérvia, imobilização cervical e intubação
@@ -246,19 +203,19 @@ export function LandingPage() {
                               <strong>E (Exposição):</strong> avaliação global e controle térmico.
                             </li>
                           </ul>
-                          <h5>🧠 Monitorização e Diagnóstico</h5>
+                          <p className="demo-response-subtitle">🧠 Monitorização e Diagnóstico</p>
                           <ul>
                             <li>Monitorização contínua cardíaca, pressão arterial, saturação e glicemia.</li>
                             <li>TC de crânio precoce após estabilização inicial.</li>
                             <li>Monitorização invasiva da PIC em pacientes com critérios clínicos e tomográficos.</li>
                           </ul>
-                          <h5>⚙️ Controle da PIC e Lesão Secundária</h5>
+                          <p className="demo-response-subtitle">⚙️ Controle da PIC e Lesão Secundária</p>
                           <ul>
                             <li>Elevar cabeceira a 30º e manter alinhamento neutro da cabeça/pescoço.</li>
                             <li>Controle rigoroso ventilatório e hemodinâmico.</li>
                             <li>Controle glicêmico, profilaxia anticonvulsivante e manutenção de normotermia.</li>
                           </ul>
-                          <h5>📋 Resumo do Manejo Inicial do TCE Grave</h5>
+                          <p className="demo-response-subtitle">📋 Resumo do Manejo Inicial do TCE Grave</p>
                           <div className="demo-mini-table">
                             <div>
                               <strong>Via aérea</strong>
@@ -396,38 +353,7 @@ export function LandingPage() {
               description="Não é uma IA genérica. É uma IA que estudou o que você estuda."
               title="Treinado nos livros que você usa na faculdade"
             />
-            <div className="sources-carousel-wrap">
-              <button aria-label="Ver áreas anteriores" className="sources-carousel-arrow" onClick={() => handleSourceScroll("left")} type="button">
-                <ChevronLeft size={20} />
-              </button>
-              <div className="sources-carousel" ref={sourcesCarouselRef}>
-                {landingContent.library.map((book) => (
-                  <article className="source-card" key={`${book.area}-${book.mainSource}`}>
-                    <div className="source-cover-placeholder">
-                      <span>
-                        capa do
-                        <br />
-                        livro aqui
-                      </span>
-                    </div>
-                    <div className="source-card-content">
-                      <h3 className="source-main">{book.mainSource}</h3>
-                      <p className="source-meta">
-                        <span>
-                          <strong>Edição:</strong> {book.edition}
-                        </span>
-                        <span>
-                          <strong>Área:</strong> {book.area}
-                        </span>
-                      </p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-              <button aria-label="Ver próximas áreas" className="sources-carousel-arrow" onClick={() => handleSourceScroll("right")} type="button">
-                <ChevronRight size={20} />
-              </button>
-            </div>
+            <SourcesCarousel items={landingContent.library} />
             <p className="library-legal-note">
               Direitos autorais e propriedade intelectual. O MedSeek AI não armazena, disponibiliza nem distribui obras
               integrais protegidas por direitos autorais. Utiliza apenas fragmentos breves, com referência à fonte e
@@ -521,23 +447,7 @@ export function LandingPage() {
                 <span>Fontes</span>
               </article>
             </div>
-            <div className="testimonials-carousel-wrap">
-              <button aria-label="Ver testimonials anteriores" className="testimonials-carousel-arrow" onClick={() => handleTestimonialScroll("left")} type="button">
-                <ChevronLeft size={18} />
-              </button>
-              <div className="testimonials-carousel" ref={testimonialsCarouselRef}>
-                {landingContent.testimonials.map((item) => (
-                  <article className="testimonial" key={item.author}>
-                    <p className="testimonial-quote">{item.quote}</p>
-                    <p className="testimonial-author">{item.author}</p>
-                    <p className="testimonial-role">{item.role}</p>
-                  </article>
-                ))}
-              </div>
-              <button aria-label="Ver próximos testimonials" className="testimonials-carousel-arrow" onClick={() => handleTestimonialScroll("right")} type="button">
-                <ChevronRight size={18} />
-              </button>
-            </div>
+            <TestimonialsCarousel items={landingContent.testimonials} />
           </Container>
         </section>
 
@@ -629,7 +539,7 @@ export function LandingPage() {
             <span className="brand-byline" aria-label="Powered by Liberty">
               <span aria-hidden className="brand-byline-divider" />
               <span className="brand-byline-text">by</span>
-              <img alt="Liberty" className="brand-byline-logo" src="/logo-liberty.svg" />
+              <Image alt="Liberty" className="brand-byline-logo" height={19} src="/logo-liberty.svg" width={114} />
             </span>
           </strong>
           <nav aria-label="Links de rodapé" className="footer-nav">
@@ -643,3 +553,9 @@ export function LandingPage() {
     </>
   );
 }
+
+
+
+
+
+

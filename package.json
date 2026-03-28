@@ -12,6 +12,20 @@
   "keywords": [],
   "author": "MedSeek",
   "license": "ISC",
+  "browserslist": {
+    "production": [
+      "chrome >= 111",
+      "edge >= 111",
+      "firefox >= 113",
+      "safari >= 16.4",
+      "ios_saf >= 16.4"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "dependencies": {
     "lucide-react": "^1.7.0",
     "next": "^16.2.1",

@@ -1,5 +1,4 @@
-﻿"use client";
-
+﻿import Image from "next/image";
 import Link from "next/link";
 
 import type { LinkItem } from "@/src/types/landing";
@@ -23,7 +22,7 @@ export function Header({ navItems }: HeaderProps) {
           <div className="brand-byline" aria-label="Powered by Liberty">
             <span aria-hidden className="brand-byline-divider" />
             <span className="brand-byline-text">by</span>
-            <img alt="Liberty" className="brand-byline-logo" src="/logo-liberty.svg" />
+            <Image alt="Liberty" className="brand-byline-logo" height={19} src="/logo-liberty.svg" width={114} />
           </div>
         </div>
 
