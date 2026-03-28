@@ -11,20 +11,21 @@ type TestimonialsCarouselProps = {
 
 export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
   const [index, setIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<Array<HTMLElement | null>>([]);
 
   const lastIndex = Math.max(items.length - 1, 0);
 
   useEffect(() => {
+    const carousel = carouselRef.current;
     const current = itemRefs.current[index];
-    if (!current) {
+    if (!carousel || !current) {
       return;
     }
 
-    current.scrollIntoView({
+    carousel.scrollTo({
+      left: current.offsetLeft,
       behavior: "smooth",
-      block: "nearest",
-      inline: "start",
     });
   }, [index]);
 
@@ -41,7 +42,7 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
       <button aria-label="Ver testimonials anteriores" className="testimonials-carousel-arrow" onClick={goPrev} type="button">
         <ChevronLeft size={18} />
       </button>
-      <div className="testimonials-carousel">
+      <div className="testimonials-carousel" ref={carouselRef}>
         {items.map((item, currentIndex) => (
           <article
             className="testimonial"

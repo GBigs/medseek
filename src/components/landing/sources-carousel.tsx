@@ -11,20 +11,21 @@ type SourcesCarouselProps = {
 
 export function SourcesCarousel({ items }: SourcesCarouselProps) {
   const [index, setIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<Array<HTMLElement | null>>([]);
 
   const lastIndex = Math.max(items.length - 1, 0);
 
   useEffect(() => {
+    const carousel = carouselRef.current;
     const current = itemRefs.current[index];
-    if (!current) {
+    if (!carousel || !current) {
       return;
     }
 
-    current.scrollIntoView({
+    carousel.scrollTo({
+      left: current.offsetLeft,
       behavior: "smooth",
-      block: "nearest",
-      inline: "start",
     });
   }, [index]);
 
@@ -41,7 +42,7 @@ export function SourcesCarousel({ items }: SourcesCarouselProps) {
       <button aria-label="Ver áreas anteriores" className="sources-carousel-arrow" onClick={goPrev} type="button">
         <ChevronLeft size={20} />
       </button>
-      <div className="sources-carousel">
+      <div className="sources-carousel" ref={carouselRef}>
         {items.map((book, currentIndex) => (
           <article
             className="source-card"
