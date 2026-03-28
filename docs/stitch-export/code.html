@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MedSeek | Respostas Clínicas Exatas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#2c2f31",
+              "error-dim": "#9f0519",
+              "on-tertiary-fixed-variant": "#006907",
+              "outline": "#747779",
+              "on-background": "#2c2f31",
+              "on-secondary-fixed": "#2f433f",
+              "error": "#b31b25",
+              "primary-fixed": "#4ef2b0",
+              "primary-container": "#4ef2b0",
+              "on-surface-variant": "#595c5e",
+              "surface-tint": "#006947",
+              "on-tertiary-container": "#005e06",
+              "inverse-primary": "#4ef2b0",
+              "tertiary-fixed": "#8ff87e",
+              "on-secondary-fixed-variant": "#4b605b",
+              "surface-container-lowest": "#ffffff",
+              "surface": "#f5f7f9",
+              "secondary-fixed": "#d0e7e1",
+              "surface-container-low": "#eef1f3",
+              "error-container": "#fb5151",
+              "surface-container": "#e5e9eb",
+              "secondary-container": "#d0e7e1",
+              "on-tertiary-fixed": "#004903",
+              "on-primary-fixed-variant": "#006141",
+              "tertiary-dim": "#005d06",
+              "primary": "#006947",
+              "background": "#f5f7f9",
+              "secondary-dim": "#3f544f",
+              "on-error-container": "#570008",
+              "primary-fixed-dim": "#3ae3a3",
+              "on-secondary": "#e1f8f1",
+              "outline-variant": "#abadaf",
+              "secondary": "#4b605b",
+              "surface-bright": "#f5f7f9",
+              "tertiary-container": "#8ff87e",
+              "on-secondary-container": "#415651",
+              "tertiary": "#006b08",
+              "on-primary-fixed": "#00412a",
+              "inverse-on-surface": "#9a9d9f",
+              "primary-dim": "#005c3d",
+              "inverse-surface": "#0b0f10",
+              "surface-container-high": "#dfe3e6",
+              "tertiary-fixed-dim": "#81e971",
+              "on-primary": "#c8ffe0",
+              "secondary-fixed-dim": "#c2d9d3",
+              "surface-variant": "#d9dde0",
+              "surface-container-highest": "#d9dde0",
+              "on-error": "#ffefee",
+              "surface-dim": "#d0d5d8",
+              "on-tertiary": "#d2ffc4",
+              "on-primary-container": "#00563a"
+            },
+            fontFamily: {
+              "headline": ["Bricolage Grotesque", "Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      .neural-gradient { background: linear-gradient(135deg, #2BFFBD 0%, #96FF84 100%); }
+      .neural-text { background: linear-gradient(135deg, #2BFFBD 0%, #96FF84 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- 0. NAV BAR (Shared Component Execution) -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-slate-900 dark:text-white font-headline">MedSeek</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-['Space_Grotesk'] font-medium text-sm tracking-tight text-emerald-600 dark:text-emerald-400 font-bold border-b-2 border-emerald-400" href="#solucoes">Soluções</a>
+<a class="font-['Space_Grotesk'] font-medium text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-all duration-300" href="#tecnologia">Tecnologia</a>
+<a class="font-['Space_Grotesk'] font-medium text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-all duration-300" href="#casos">Casos</a>
+<a class="font-['Space_Grotesk'] font-medium text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-all duration-300" href="#precos">Preços</a>
+<button class="neural-gradient text-on-primary-fixed px-5 py-2.5 rounded-lg font-bold text-sm hover:scale-95 transition-all duration-200">Teste gratuitamente</button>
+</div>
+<button class="md:hidden text-slate-900 dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- 1. HERO SECTION -->
+<section class="relative bg-inverse-surface pt-32 pb-24 overflow-hidden min-h-[921px] flex items-center">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-0 right-0 w-[800px] h-[800px] neural-gradient rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2"></div>
+</div>
+<div class="max-w-7xl mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-16 items-center">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-dim/20 text-primary-fixed mb-8 border border-primary-fixed/20">
+<span class="material-symbols-outlined text-sm" data-weight="fill">verified</span>
+<span class="text-xs font-bold uppercase tracking-widest">Inteligência Médica Baseada em Evidências</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-white leading-[1.1] mb-8 tracking-tight">
+                    Respostas clínicas exatas quando <span class="neural-text">cada segundo conta</span>.
+                </h1>
+<p class="text-xl text-inverse-on-surface mb-10 max-w-xl leading-relaxed">
+                    A primeira IA médica do Brasil treinada exclusivamente em literatura padrão-ouro. Chega de alucinações. Decisões seguras em segundos.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 mb-12">
+<button class="neural-gradient text-on-primary-fixed px-10 py-5 rounded-lg font-extrabold text-lg shadow-2xl shadow-primary/20 hover:scale-105 transition-all">
+                        Teste gratuitamente
+                    </button>
+<button class="bg-white/5 border border-white/10 text-white px-10 py-5 rounded-lg font-bold text-lg backdrop-blur-sm hover:bg-white/10 transition-all">
+                        Ver demonstração
+                    </button>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="flex items-center gap-3 text-white/80">
+<span class="material-symbols-outlined text-primary-fixed">check_circle</span>
+<span class="text-sm font-medium">Treinado com base em Harrison’s, Nelson e HCFMUSP.</span>
+</div>
+<div class="flex items-center gap-3 text-white/80">
+<span class="material-symbols-outlined text-primary-fixed">check_circle</span>
+<span class="text-sm font-medium">Fontes citadas diretamente na resposta clínica.</span>
+</div>
+<div class="flex items-center gap-3 text-white/80">
+<span class="material-symbols-outlined text-primary-fixed">check_circle</span>
+<span class="text-sm font-medium">Cálculos automáticos de doses e escores de gravidade.</span>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 neural-gradient opacity-20 blur-2xl group-hover:opacity-30 transition duration-1000"></div>
+<div class="relative bg-slate-900 border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
+<img class="w-full h-auto object-cover aspect-[4/3] mix-blend-lighten opacity-80" data-alt="Close-up of a high-tech medical tablet displaying a clean interface with clinical data graphs and medical citations in a futuristic setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYbOU3EgG3LCmtxLycxqbGVKUYHCEYgGYL02FEp0k3LkrBExV12yQnRYjcLG4ENP6kQkSnEPHW7ohaTKAoDU-ILE6HZ8MU5L2CNf2kpoFy4q05LyFvQLChevNohQoJbMOHmhCus51M7BAv-p4YA4-3CsCwLKMgIFVg8Vo5dTpXeGoIXjWYk0n8AgIBijX-Y9YSyIv54khq1rBG1ynuoj67vcAkJkiFSY6jg4b8o0_O2c-KkeQFdQ9m-BVVCBMY2-ra5nfJ70PmyQ"/>
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 to-transparent">
+<div class="flex items-center gap-4 text-white">
+<div class="w-10 h-10 rounded-full neural-gradient flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed">psychology</span>
+</div>
+<div>
+<p class="text-xs text-primary-fixed font-bold uppercase">MedSeek Neural Insight</p>
+<p class="text-sm italic">"Baseado no Harrison's 21ª Ed., a conduta imediata para..."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. DEMO SECTION -->
+<section class="py-24 bg-surface" id="solucoes">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-headline font-bold mb-4">Interface Limpa. Precisão Absoluta.</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg">Deixe de lado os manuais pesados. O MedSeek entende contexto médico e fornece a resposta exata com a fonte ao lado.</p>
+</div>
+<div class="bg-surface-container-lowest rounded-3xl p-4 md:p-8 shadow-sm border border-outline-variant/10 max-w-5xl mx-auto">
+<div class="flex items-center gap-4 mb-8 border-b border-surface-container-low pb-6">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-red-400/20 border border-red-400/40"></div>
+<div class="w-3 h-3 rounded-full bg-amber-400/20 border border-amber-400/40"></div>
+<div class="w-3 h-3 rounded-full bg-green-400/20 border border-green-400/40"></div>
+</div>
+<div class="flex-1 bg-surface-container-low rounded-lg px-4 py-2 text-sm text-on-surface-variant flex items-center justify-between">
+<span>Consulta: Manejo de Choque Séptico em Pediatria</span>
+<span class="material-symbols-outlined text-sm">lock</span>
+</div>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="md:col-span-2 space-y-6">
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 text-sm">
+                                Qual a dose de ataque de fluidos no choque séptico pediátrico segundo o Nelson e as diretrizes recentes?
+                            </div>
+</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded neural-gradient flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-fixed text-sm">auto_awesome</span>
+</div>
+<div class="bg-primary/5 border border-primary/10 rounded-xl p-6 text-on-surface">
+<p class="mb-4">No choque séptico pediátrico, a reposição volêmica inicial deve ser de <strong>20 mL/kg</strong> de cristalóides isotônicos, administrados em 5 a 10 minutos.</p>
+<div class="bg-white rounded-lg p-3 border border-primary/20 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm">menu_book</span>
+<div>
+<p class="text-[11px] font-bold text-primary uppercase tracking-tighter">Citação Verificada</p>
+<p class="text-xs text-on-surface-variant font-medium">Nelson Tratado de Pediatria, 21ª Ed., Cap. 74 - Choque Sepsis e Insuficiência de Múltiplos Órgãos.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-6 space-y-6">
+<p class="text-xs font-bold text-secondary tracking-widest uppercase">Análise Rápida</p>
+<div class="space-y-4">
+<div class="p-3 bg-white rounded-lg border border-outline-variant/20">
+<p class="text-[10px] text-on-surface-variant uppercase">Sugestão Próxima</p>
+<p class="text-xs font-bold">Escore qSOFA Pediátrico</p>
+</div>
+<div class="p-3 bg-white rounded-lg border border-outline-variant/20">
+<p class="text-[10px] text-on-surface-variant uppercase">Cálculo Automático</p>
+<p class="text-xs font-bold">Dose de Noradrenalina</p>
+</div>
+<div class="p-3 bg-white rounded-lg border border-outline-variant/20">
+<p class="text-[10px] text-on-surface-variant uppercase">Alerta de Segurança</p>
+<p class="text-xs font-bold text-error">Risco de Sobrecarga Hídrica</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. PROBLEM SECTION -->
+<section class="py-32 bg-surface-container-low overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="absolute -left-20 -top-20 w-64 h-64 bg-error/10 rounded-full blur-3xl"></div>
+<h2 class="text-4xl md:text-5xl font-headline font-bold text-on-surface mb-8 leading-tight">
+                    São 2h da manhã. Você está no plantão. <span class="text-error">E surgiu uma dúvida crítica.</span>
+</h2>
+<p class="text-lg text-on-surface-variant mb-12">
+                    Procurar em livros leva tempo que você não tem. O Google traz informações não verificadas. A insegurança no plantão é o maior inimigo da boa prática clínica.
+                </p>
+<div class="space-y-6">
+<div class="flex items-center gap-4 p-5 bg-white rounded-xl shadow-sm border-l-4 border-error">
+<span class="material-symbols-outlined text-error" data-weight="fill">warning</span>
+<p class="text-sm font-medium">"Será que a dose está correta para este peso?"</p>
+</div>
+<div class="flex items-center gap-4 p-5 bg-white rounded-xl shadow-sm border-l-4 border-error">
+<span class="material-symbols-outlined text-error" data-weight="fill">warning</span>
+<p class="text-sm font-medium">"Qual era o critério de exclusão para trombólise mesmo?"</p>
+</div>
+</div>
+</div>
+<div class="relative flex justify-center">
+<div class="w-full max-w-sm aspect-square bg-inverse-surface rounded-[40px] flex items-center justify-center overflow-hidden shadow-2xl relative">
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity" data-alt="A tired young doctor in scrubs sitting in a dimly lit hospital hallway at night, looking at a smartphone with a worried expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhB5A_6L9MJTEXtOXiGWMGRlcPjHaqLCkRQMzuy_wq5gO1YWX2wnHvparoZIyII8czUXBQP92aUiYSvgWAwlTpKVSwY52eVKzSkfkNVYD-lcvzKkXy1XRUT3mHttFN4I1QqP8tb2Tdp7Ii_HIPOVBMJaobZr3YvV7Ez5B2e0dphhNgSnZgj7cwgh_OzOS6hEB7au4vQDe8WDG5XjixjOpUDw204VIGTvo4Jbh7mik5GLJLfEQCWVbInfuL2N2GDy16tTliynhd0Q"/>
+<div class="relative z-10 text-center px-10">
+<div class="w-16 h-16 neural-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-on-primary-fixed text-3xl">bolt</span>
+</div>
+<p class="text-white text-xl font-bold font-headline">Resolva em 3 segundos.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. CREDIBILITY SECTION -->
+<section class="py-24 bg-surface" id="tecnologia">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<h2 class="text-3xl font-headline font-bold mb-16">Treinado nos livros que você usa na faculdade</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+<!-- Book Covers -->
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-high rounded-lg mb-4 shadow-md group-hover:-translate-y-2 transition-transform overflow-hidden relative border border-outline-variant/30">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="The cover of Harrison's Principles of Internal Medicine textbook with professional clinical photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByTMsQVNTKBFaoQZxMoATr1I4lR5KDo0jdFSznEwsN0nmMKbwfRoHU__SdBjX-wpzgFNpegKUNpe1finwmYU8dGGJqrZWjlPtPI8gryEqujK8sT9YNlYkojUuqnbsScrIX_AO1yKRwC1Qb7UtFt9NJ_9-xyU0cUI-HF51VxM58EW73CINDnNlm88zmq3OlG7MgpWzskQq86KXzwP_YhoFsTIeaRJt6kQKfmo3q5pmIkFM0XEA7cddlbj9g5Lnh7bAKTAo3uJu9Sg"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-white font-bold text-xs uppercase tracking-tighter px-2 py-1 bg-primary rounded">Harrison's</span>
+</div>
+</div>
+</div>
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-high rounded-lg mb-4 shadow-md group-hover:-translate-y-2 transition-transform overflow-hidden relative border border-outline-variant/30">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="The cover of Nelson Textbook of Pediatrics in a scholarly medical library setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCWhaG8j2fGKybYxobyDNRmYt2qVHLjvsEq2pUplhJcifBjCL3lX_TU4cuYbCH5WqbWQ2tH5CIiVg-8qbiRNiHfWjT75PfXmBuebnpnK8X5rT8HtcsLazcPpOP0bjvOBdDKEwW7cSqpspCNjD299_VjLcUBQgkUVipU9weAPZkbH38u23k-li4-CjH-27IlckT-ql1SKgc56GhQl1d_qp8bPeaCBU76QJ4_lGTa0AQrkUb-7bEeDee6j8lZ1RHm49rPeMV_YFDXw"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-white font-bold text-xs uppercase tracking-tighter px-2 py-1 bg-primary rounded">Nelson</span>
+</div>
+</div>
+</div>
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-high rounded-lg mb-4 shadow-md group-hover:-translate-y-2 transition-transform overflow-hidden relative border border-outline-variant/30">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Medical textbook HCFMUSP Clinical Medicine cover in a laboratory atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqCmqGBh7_QFJRt96JVcy4vc6AP13pcNP06l1szvoTKXJmaIFhZPTuohbGjEijdgyUmeGnCW_OLemH3nEHJ20U3W4JSBj4fWamDjDzDN4pW0qUYqugIXwyZWjTumrwQb4J9OZVmSvBsIZ_s7matrNdr-mY0utzoJrkUYCmE5Viagj29o_0SkkjQigWj7sAK2HgS11DBbchIyfeOvJK0G4fDFTWYG1TRnrTABZTdS6_a1KNpX79UsvUDKu5fEB6LYEhXde-_ztjVA"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-white font-bold text-xs uppercase tracking-tighter px-2 py-1 bg-primary rounded">HCFMUSP</span>
+</div>
+</div>
+</div>
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-high rounded-lg mb-4 shadow-md group-hover:-translate-y-2 transition-transform overflow-hidden relative border border-outline-variant/30">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Bates Guide to Physical Examination textbook cover on a clean clinical white desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_3ut3lHbAl57V1Ugbm4Ei-20lqgT_J1UtCgRdExMtnUSpAfgQ3Op7RahJ5-O_nAnWzbJK24oNQrY5d0yjmdXUb3r9KKXbGq-6STbb78C1z_pDIdDVlxwyRp35fmEWvwVoRgPLJWnGDxxapPMu6UelM8HX2vI-DKxDqh28d-yONdAq5lItgG2qshn0SPtNeniEsqfkKouN7bXclhTHZjDPjra6rBk1Ti5AiKdIVpx7yEu9aiTtwwzio0eLlUXPTRmNALuf2V7BlA"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-white font-bold text-xs uppercase tracking-tighter px-2 py-1 bg-primary rounded">Bates</span>
+</div>
+</div>
+</div>
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-high rounded-lg mb-4 shadow-md group-hover:-translate-y-2 transition-transform overflow-hidden relative border border-outline-variant/30">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Medical Guyton and Hall Physiology textbook on a modern glass table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPEWWYMB0TXzSVtAstsFGfXYut0v9V9-JQuIoM_aqi5DzZVmNuuhBTw2iCPHpjYIa4qpaWX46gTw4bAGwg4GCGWuq4kHD1a8u0EpE1GihwkYBq34WIhZhCbfE6FAvplh2Ow-eZfS9CrYF-tffivGAnF3NsCUI_d7upuJ-oN5oKisr3eBPYKxSuCXSdZtDLa3P2_t2lDWBonnnSCjt-mNHWuES9Q4cj6uHVAJlbgubpeHvfYx-zKGhZs_ZGJs0biyuQIbYC2qR2CA"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-white font-bold text-xs uppercase tracking-tighter px-2 py-1 bg-primary rounded">Guyton</span>
+</div>
+</div>
+</div>
+<div class="group">
+<div class="aspect-[3/4] bg-surface-container-high rounded-lg mb-4 shadow-md group-hover:-translate-y-2 transition-transform overflow-hidden relative border border-outline-variant/30">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Netter's Anatomy textbook cover highlighting technical anatomical precision" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpaji1YrWBMb43KVYXNiUvGTGuvAtMif5CXJnU8ytp_WGZ-ourYArnlr9oTQAHstQ6mjv1sJaaWsAhyJrfxt4n3XsbNQIiS-BL_xXkC8kcrzaqpHPj1wxbG4Hd0LUj17mbfI_8DR8E8_5YVaOSK7IWjlNdLCbYtLm_xz3_XzwXxeIaOvKWQ9UMKvGHleCDPetAW7iCgpN5MKvc9oYIAUMYBOgqAk89tbVWe_RKkeoSnjf69G03Ox32pExGE9oUhrd8LDUe5CBRtQ"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-white font-bold text-xs uppercase tracking-tighter px-2 py-1 bg-primary rounded">Netter</span>
+</div>
+</div>
+</div>
+</div>
+<p class="mt-12 text-on-surface-variant font-medium text-sm">E mais 450+ diretrizes das principais sociedades brasileiras e internacionais.</p>
+</div>
+</section>
+<!-- 5. BENEFITS SECTION -->
+<section class="py-24 bg-surface-container-low" id="casos">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div>
+<h2 class="text-4xl font-headline font-bold mb-4">Feito para sua jornada</h2>
+<p class="text-on-surface-variant text-lg">Seja no ciclo clínico ou na sala de emergência.</p>
+</div>
+<div class="flex bg-surface-container-high p-1.5 rounded-full">
+<button class="px-8 py-2.5 rounded-full bg-white shadow-sm font-bold text-sm">Estudantes</button>
+<button class="px-8 py-2.5 rounded-full text-on-surface-variant hover:text-on-surface font-bold text-sm transition-all">Médicos</button>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="bg-surface-container-lowest p-10 rounded-3xl border border-outline-variant/10 hover:shadow-xl transition-all group">
+<div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:neural-gradient transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-fixed">school</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4">Aprenda com quem sabe</h3>
+<p class="text-on-surface-variant leading-relaxed">Não decore. Entenda o porquê de cada conduta. Use o MedSeek para estudar casos clínicos e conferir as fontes que os seus professores usam em sala de aula.</p>
+</div>
+<div class="bg-surface-container-lowest p-10 rounded-3xl border border-outline-variant/10 hover:shadow-xl transition-all group">
+<div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 group-hover:neural-gradient transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-fixed">timer</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4">Confiança e Velocidade</h3>
+<p class="text-on-surface-variant leading-relaxed">Ganhe agilidade no raciocínio clínico. Valide suas suspeitas diagnósticas em segundos e tenha certeza absoluta das doses e interações medicamentosas.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. DIFFERENTIATION SECTION -->
+<section class="py-24 bg-surface">
+<div class="max-w-5xl mx-auto px-6">
+<h2 class="text-3xl font-headline font-bold mb-12 text-center">Por que o MedSeek é diferente?</h2>
+<div class="overflow-hidden rounded-3xl border border-outline-variant/20 shadow-sm bg-white">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="p-6 font-headline font-bold text-on-surface">Funcionalidade</th>
+<th class="p-6 font-headline font-bold text-on-surface-variant">IA Genérica (ChatGPT)</th>
+<th class="p-6 font-headline font-bold text-primary">MedSeek Neural</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr>
+<td class="p-6 font-bold text-sm">Fontes Médicas</td>
+<td class="p-6 text-sm text-error flex items-center gap-2">
+<span class="material-symbols-outlined text-base">close</span> Não verificadas
+                            </td>
+<td class="p-6 text-sm text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-base">check</span> Fontes Padrão-Ouro
+                            </td>
+</tr>
+<tr>
+<td class="p-6 font-bold text-sm">Cálculos Clínicos</td>
+<td class="p-6 text-sm text-error flex items-center gap-2">
+<span class="material-symbols-outlined text-base">close</span> Risco de erro matemático
+                            </td>
+<td class="p-6 text-sm text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-base">check</span> Calculadoras Integradas
+                            </td>
+</tr>
+<tr>
+<td class="p-6 font-bold text-sm">Contexto do Plantão</td>
+<td class="p-6 text-sm text-error flex items-center gap-2">
+<span class="material-symbols-outlined text-base">close</span> Respostas genéricas
+                            </td>
+<td class="p-6 text-sm text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-base">check</span> Foco em Conduta Imediata
+                            </td>
+</tr>
+<tr>
+<td class="p-6 font-bold text-sm">Alucinações</td>
+<td class="p-6 text-sm text-error flex items-center gap-2">
+<span class="material-symbols-outlined text-base">close</span> Alta incidência
+                            </td>
+<td class="p-6 text-sm text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-base">check</span> Zero alucinação (Rigid-Source)
+                            </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- 7. SOCIAL PROOF SECTION -->
+<section class="py-24 bg-inverse-surface text-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid lg:grid-cols-3 gap-16">
+<div>
+<h2 class="text-4xl font-headline font-bold mb-6">Milhares de estudantes e médicos confiam no MedSeek.</h2>
+<p class="text-inverse-on-surface text-lg mb-8">Junte-se à maior comunidade de IA médica aplicada do Brasil.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<span class="text-4xl font-extrabold neural-text font-headline">15k+</span>
+<span class="text-sm font-medium uppercase tracking-widest text-white/60">Usuários Ativos</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-4xl font-extrabold neural-text font-headline">500k+</span>
+<span class="text-sm font-medium uppercase tracking-widest text-white/60">Consultas Mensais</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 grid md:grid-cols-2 gap-8">
+<div class="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+<div class="flex gap-1 mb-4">
+<span class="material-symbols-outlined text-primary-fixed" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary-fixed" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary-fixed" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary-fixed" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary-fixed" data-weight="fill">star</span>
+</div>
+<p class="italic text-inverse-on-surface mb-6 leading-relaxed">"O MedSeek mudou minha segurança no plantão. Ter a conduta do Nelson no bolso me salvou em um caso complexo de urgência pediátrica."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-slate-700"></div>
+<div>
+<p class="font-bold text-sm">Dr. Marcelo Silva</p>
+<p class="text-xs text-white/40 uppercase">Pediatra - HCFMUSP</p>
+</div>
+</div>
+</div>
+<div class="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+<div class="flex gap-1 mb-4">
+<span class="material-symbols-outlined text-primary-fixed" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary-fixed" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary-fixed" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary-fixed" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-primary-fixed" data-weight="fill">star</span>
+</div>
+<p class="italic text-inverse-on-surface mb-6 leading-relaxed">"Uso para estudar para as provas de residência. Ele resume os tópicos mais importantes dos livros direto ao ponto."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-slate-700"></div>
+<div>
+<p class="font-bold text-sm">Amanda Torres</p>
+<p class="text-xs text-white/40 uppercase">Interna do 6º Ano - UNIFESP</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. PRICING SECTION -->
+<section class="py-24 bg-surface" id="precos">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-headline font-bold mb-4">Investimento no seu futuro</h2>
+<p class="text-on-surface-variant">Escolha o plano ideal para sua rotina.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Free -->
+<div class="bg-surface-container-low p-8 rounded-3xl border border-outline-variant/10 flex flex-col">
+<h3 class="text-xl font-bold mb-2">Grátis</h3>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-3xl font-extrabold font-headline">R$0</span>
+<span class="text-on-surface-variant text-sm">/mês</span>
+</div>
+<ul class="space-y-4 mb-12 flex-1">
+<li class="flex gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-sm">check</span> 10 consultas mensais</li>
+<li class="flex gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-sm">check</span> Fontes Harrison's e Nelson</li>
+<li class="flex gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-sm">check</span> Acesso Mobile</li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-outline-variant font-bold hover:bg-surface-container-high transition-all">Começar Agora</button>
+</div>
+<!-- Plus -->
+<div class="bg-inverse-surface p-8 rounded-3xl border-2 border-primary-fixed flex flex-col relative scale-105 shadow-2xl">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 neural-gradient px-4 py-1 rounded-full text-[10px] font-extrabold text-on-primary-fixed uppercase tracking-widest">Mais Popular</div>
+<h3 class="text-xl font-bold mb-2 text-white">Plus</h3>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-3xl font-extrabold font-headline text-white">R$49,90</span>
+<span class="text-inverse-on-surface text-sm">/mês</span>
+</div>
+<ul class="space-y-4 mb-12 flex-1">
+<li class="flex gap-3 text-sm text-inverse-on-surface"><span class="material-symbols-outlined text-primary-fixed text-sm">check</span> Consultas Ilimitadas</li>
+<li class="flex gap-3 text-sm text-inverse-on-surface"><span class="material-symbols-outlined text-primary-fixed text-sm">check</span> Todas as 450+ diretrizes</li>
+<li class="flex gap-3 text-sm text-inverse-on-surface"><span class="material-symbols-outlined text-primary-fixed text-sm">check</span> Calculadoras Médicas Pro</li>
+<li class="flex gap-3 text-sm text-inverse-on-surface"><span class="material-symbols-outlined text-primary-fixed text-sm">check</span> Suporte Prioritário</li>
+</ul>
+<button class="w-full py-4 rounded-xl neural-gradient text-on-primary-fixed font-extrabold hover:scale-105 transition-all">Assinar Agora</button>
+</div>
+<!-- Pro -->
+<div class="bg-surface-container-low p-8 rounded-3xl border border-outline-variant/10 flex flex-col">
+<h3 class="text-xl font-bold mb-2">Pro Individual</h3>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-3xl font-extrabold font-headline">R$89,90</span>
+<span class="text-on-surface-variant text-sm">/mês</span>
+</div>
+<ul class="space-y-4 mb-12 flex-1">
+<li class="flex gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-sm">check</span> Tudo do Plus</li>
+<li class="flex gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-sm">check</span> Upload de exames para análise</li>
+<li class="flex gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-sm">check</span> Acesso multi-dispositivo</li>
+<li class="flex gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-sm">check</span> Certificado de uso</li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-outline-variant font-bold hover:bg-surface-container-high transition-all">Assinar Agora</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. FAQ SECTION -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-3xl mx-auto px-6">
+<h2 class="text-3xl font-headline font-bold mb-12 text-center">Perguntas Frequentes</h2>
+<div class="space-y-4">
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/10">
+<button class="flex justify-between items-center w-full font-bold text-left">
+                        A IA pode cometer erros?
+                        <span class="material-symbols-outlined">expand_more</span>
+</button>
+<p class="mt-4 text-sm text-on-surface-variant">Diferente de IAs genéricas, o MedSeek opera em um sistema de "Rigid Source Retrieval". Ele só gera respostas com base nos textos médicos oficiais carregados. Se a informação não estiver na literatura científica, ele informará que não encontrou, em vez de inventar uma resposta.</p>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/10">
+<button class="flex justify-between items-center w-full font-bold text-left">
+                        Isso substitui o médico ou os livros?
+                        <span class="material-symbols-outlined">expand_more</span>
+</button>
+<p class="mt-4 text-sm text-on-surface-variant">De forma alguma. O MedSeek é uma ferramenta de auxílio à decisão clínica. Ele serve para agilizar a consulta a referências bibliográficas que você já conhece, otimizando o seu tempo e aumentando sua segurança.</p>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-outline-variant/10">
+<button class="flex justify-between items-center w-full font-bold text-left">
+                        Posso confiar para dar conduta no plantão?
+                        <span class="material-symbols-outlined">expand_more</span>
+</button>
+<p class="mt-4 text-sm text-on-surface-variant">O MedSeek oferece a informação técnica baseada em diretrizes. A decisão final e a responsabilidade técnica sobre o paciente são sempre do profissional médico assistente.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 10. FINAL CTA SECTION -->
+<section class="py-24 bg-inverse-surface overflow-hidden relative">
+<div class="absolute inset-0 pointer-events-none opacity-20">
+<div class="absolute bottom-0 left-0 w-[600px] h-[600px] neural-gradient rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2"></div>
+</div>
+<div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+<h2 class="text-4xl md:text-6xl font-headline font-extrabold text-white mb-8">Pare de carregar manuais. <br/><span class="neural-text">Comece a carregar respostas.</span></h2>
+<p class="text-xl text-inverse-on-surface mb-12">Teste agora a única IA médica que cita as fontes padrão-ouro em tempo real.</p>
+<button class="neural-gradient text-on-primary-fixed px-12 py-6 rounded-xl font-extrabold text-xl shadow-2xl hover:scale-105 transition-all mb-12">
+                Teste gratuitamente agora
+            </button>
+<div class="flex flex-col md:flex-row justify-center gap-8">
+<div class="flex items-center gap-2 text-white/60 text-sm">
+<span class="material-symbols-outlined text-primary-fixed text-lg">no_accounts</span>
+                    Sem cartão de crédito
+                </div>
+<div class="flex items-center gap-2 text-white/60 text-sm">
+<span class="material-symbols-outlined text-primary-fixed text-lg">bolt</span>
+                    Acesso imediato
+                </div>
+<div class="flex items-center gap-2 text-white/60 text-sm">
+<span class="material-symbols-outlined text-primary-fixed text-lg">verified</span>
+                    Fontes Médicas Oficiais
+                </div>
+</div>
+</div>
+</section>
+<!-- FOOTER (Shared Component Execution) -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center py-12 px-8 max-w-7xl mx-auto w-full">
+<div class="text-lg font-bold text-slate-900 dark:text-white font-headline mb-4 md:mb-0">MedSeek Neural Systems</div>
+<div class="flex flex-wrap justify-center gap-8 mb-4 md:mb-0">
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-500 hover:text-emerald-500 transition-colors" href="#">Privacidade</a>
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-500 hover:text-emerald-500 transition-colors" href="#">Termos de Uso</a>
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-500 hover:text-emerald-500 transition-colors" href="#">Segurança</a>
+<a class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-500 hover:text-emerald-500 transition-colors" href="#">Contato</a>
+</div>
+<p class="font-['Space_Grotesk'] text-xs uppercase tracking-widest text-slate-500">© 2024 MedSeek Neural Systems. Todos os direitos reservados.</p>
+</div>
+</footer>
+</body></html>
