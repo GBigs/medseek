@@ -1,10 +1,10 @@
-# MedSeek Landing (Next.js)
+# MedSeek Landing (Vite)
 
-Landing page institucional em **Next.js (App Router + TypeScript)** com arquitetura modular para evolucao continua.
+Landing page institucional em **Vite + React + TypeScript** com arquitetura modular para evolucao continua.
 
 ## Stack
 
-- Next.js 16
+- Vite 6
 - React 19
 - TypeScript
 - CSS global com design tokens
@@ -23,17 +23,16 @@ Acesse `http://localhost:3000`.
 
 ```bash
 npm run build
-npm run start
+npm run preview
 ```
 
 ## Estrutura de pastas
 
 ```txt
-app/
-  globals.css
-  layout.tsx
-  page.tsx
 src/
+  App.tsx
+  main.tsx
+  index.css
   components/
     landing/
       header.tsx
@@ -52,6 +51,8 @@ docs/
   stitch-export/
     code.html
     screen.png
+vite.config.ts
+index.html
 ```
 
 ## Padroes adotados
@@ -59,6 +60,5 @@ docs/
 - Conteudo textual centralizado em `src/content/landing-content.ts`.
 - Componentes reutilizaveis em `src/components/shared`.
 - Secoes da landing desacopladas do conteudo para facilitar manutencao.
-- Tokens de design e responsividade centralizados em `app/globals.css`.
-- Imagens remotas configuradas no `next.config.mjs`.
+- Tokens de design e responsividade centralizados em `src/index.css`.
 

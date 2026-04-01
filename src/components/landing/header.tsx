@@ -1,6 +1,3 @@
-﻿import Image from "next/image";
-import Link from "next/link";
-
 import type { LinkItem } from "@/src/types/landing";
 
 import { BrandWordmark } from "@/src/components/shared/brand-wordmark";
@@ -16,21 +13,21 @@ export function Header({ navItems }: HeaderProps) {
     <header className="site-header">
       <Container className="site-header-inner">
         <div className="brand-cluster">
-          <Link aria-label="Ir para o início" className="brand" href="#top">
+          <a aria-label="Ir para o início" className="brand" href="#top">
             <BrandWordmark />
-          </Link>
-          <div className="brand-byline" aria-label="Powered by Liberty">
+          </a>
+          <div aria-label="Powered by Liberty" className="brand-byline">
             <span aria-hidden className="brand-byline-divider" />
             <span className="brand-byline-text">by</span>
-            <Image alt="Liberty" className="brand-byline-logo" height={19} src="/logo-liberty.svg" width={114} />
+            <img alt="Liberty" className="brand-byline-logo" height={19} src="/logo-liberty.svg" width={114} />
           </div>
         </div>
 
         <nav aria-label="Navegação principal" className="desktop-nav">
           {navItems.map((item) => (
-            <Link className="nav-link" href={item.href} key={item.href}>
+            <a className="nav-link" href={item.href} key={item.href}>
               {item.label}
-            </Link>
+            </a>
           ))}
         </nav>
 

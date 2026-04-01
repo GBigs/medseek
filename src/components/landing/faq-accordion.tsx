@@ -1,6 +1,4 @@
-"use client";
-
-import { ChevronDown, CircleHelp } from "lucide-react";
+﻿import { ChevronDown, CircleHelp } from "lucide-react";
 import { useState } from "react";
 
 import type { FaqItem } from "@/src/types/landing";
@@ -39,3 +37,4 @@ export function FaqAccordion({ items }: FaqAccordionProps) {
     </div>
   );
 }
+

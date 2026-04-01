@@ -1,6 +1,4 @@
-﻿"use client";
-
-import { FileQuestion, Lightbulb, ScanSearch, ShieldCheck } from "lucide-react";
+﻿import { FileQuestion, Lightbulb, ScanSearch, ShieldCheck } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import type { JourneyOption } from "@/src/types/landing";
@@ -77,3 +75,4 @@ export function JourneyCardTabs({ options }: JourneyCardTabsProps) {
     </article>
   );
 }
+

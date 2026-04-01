@@ -1,13 +1,13 @@
 {
   "name": "medseek.com.br",
   "version": "1.0.0",
-  "description": "Landing page institucional MedSeek com Next.js",
+  "description": "Landing page institucional MedSeek com Vite",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint . --max-warnings=0",
-    "lint:fix": "eslint . --fix"
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --port=3000 --host=0.0.0.0",
+    "lint": "tsc --noEmit"
   },
   "keywords": [],
   "author": "MedSeek",
@@ -27,17 +27,18 @@
     ]
   },
   "dependencies": {
+    "@fontsource/dm-sans": "^5.2.8",
     "lucide-react": "^1.7.0",
-    "next": "^16.2.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
     "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^9.39.4",
-    "eslint-config-next": "^16.2.1",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "vite": "^6.4.1",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }

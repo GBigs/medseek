@@ -1,6 +1,4 @@
-﻿"use client";
-
-import { ChevronLeft, ChevronRight } from "lucide-react";
+﻿import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import type { Testimonial } from "@/src/types/landing";
@@ -63,3 +61,4 @@ export function TestimonialsCarousel({ items }: TestimonialsCarouselProps) {
     </div>
   );
 }
+

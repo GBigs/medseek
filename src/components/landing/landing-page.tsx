@@ -19,7 +19,6 @@
   TriangleAlert,
   X,
 } from "lucide-react";
-import Image from "next/image";
 
 import { Header } from "@/src/components/landing/header";
 import { FaqAccordion } from "@/src/components/landing/faq-accordion";
@@ -539,7 +538,7 @@ export function LandingPage() {
             <span className="brand-byline" aria-label="Powered by Liberty">
               <span aria-hidden className="brand-byline-divider" />
               <span className="brand-byline-text">by</span>
-              <Image alt="Liberty" className="brand-byline-logo" height={19} src="/logo-liberty.svg" width={114} />
+              <img alt="Liberty" className="brand-byline-logo" height={19} src="/logo-liberty.svg" width={114} />
             </span>
           </strong>
           <nav aria-label="Links de rodapé" className="footer-nav">
@@ -553,6 +552,7 @@ export function LandingPage() {
     </>
   );
 }
+
 
 
 
