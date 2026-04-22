@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview --port=3000 --host=0.0.0.0",
-    "lint": "tsc --noEmit"
+    "preview": "npm run build && wrangler dev",
+    "lint": "tsc --noEmit",
+    "deploy": "npm run build && wrangler deploy"
   },
   "keywords": [],
   "author": "Gustavo Bigs",
@@ -33,12 +34,14 @@
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.33.1",
     "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.0.4",
     "typescript": "^5.9.3",
     "vite": "^6.4.1",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "wrangler": "^4.84.1"
   }
 }
