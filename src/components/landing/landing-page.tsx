@@ -3,6 +3,7 @@
   Check,
   ChevronDown,
   ChevronRight,
+  Code2,
   CreditCard,
   FlaskConical,
   FileUp,
@@ -546,7 +547,19 @@ export function LandingPage() {
             <a href="#">Termos de uso</a>
             <a href="mailto:medseek@libertyti.com.br">Contato</a>
           </nav>
-          <p>© 2026 MedSeek. Todos os direitos reservados.</p>
+          <div className="site-footer-meta">
+            <p className="footer-copyright">© 2026 MedSeek. Todos os direitos reservados.</p>
+            <a
+              className="footer-credit"
+              href="https://www.gustavobigs.com.br/"
+              rel="nofollow noreferrer noopener"
+              referrerPolicy="no-referrer"
+              target="_blank"
+            >
+              <Code2 aria-hidden size={12} />
+              <span>Desenvolvido por Gustavo Bigs</span>
+            </a>
+          </div>
         </Container>
       </footer>
     </>

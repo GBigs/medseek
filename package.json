@@ -10,7 +10,7 @@
     "lint": "tsc --noEmit"
   },
   "keywords": [],
-  "author": "MedSeek",
+  "author": "Gustavo Bigs",
   "license": "ISC",
   "browserslist": {
     "production": [

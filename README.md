@@ -1,23 +1,27 @@
-# MedSeek Landing (Vite)
+# MedSeek Landing
 
-Landing page institucional em **Vite + React + TypeScript** com arquitetura modular para evolucao continua.
+Projeto institucional idealizado e construido por **Gustavo Bigs**.
 
-## Stack
+> Eu crio interfaces centradas no usuario, nao apenas na tecnologia. Busco entender valores, motivacoes e prioridades para transformar tudo isso em experiencias digitais incriveis.
+
+Site oficial: [gustavobigs.com.br](https://www.gustavobigs.com.br/)
+
+## Tecnologias
 
 - Vite 6
 - React 19
 - TypeScript
 - CSS global com design tokens
-- Lucide React (icones)
+- Lucide React
 
-## Como rodar
+## Como executar
 
 ```bash
 npm install
 npm run dev
 ```
 
-Acesse `http://localhost:3000`.
+A aplicacao fica disponivel em `http://localhost:3000`.
 
 ## Build de producao
 
@@ -26,39 +30,24 @@ npm run build
 npm run preview
 ```
 
-## Estrutura de pastas
+## Estrutura principal
 
 ```txt
 src/
-  App.tsx
-  main.tsx
-  index.css
   components/
     landing/
-      header.tsx
-      landing-page.tsx
     shared/
-      button.tsx
-      container.tsx
-      section-heading.tsx
   content/
-    landing-content.ts
   lib/
-    cn.ts
   types/
-    landing.ts
 docs/
   stitch-export/
-    code.html
-    screen.png
-vite.config.ts
-index.html
 ```
 
-## Padroes adotados
+## Organizacao do codigo
 
 - Conteudo textual centralizado em `src/content/landing-content.ts`.
 - Componentes reutilizaveis em `src/components/shared`.
-- Secoes da landing desacopladas do conteudo para facilitar manutencao.
-- Tokens de design e responsividade centralizados em `src/index.css`.
+- Secoes da landing separadas da camada de conteudo para manutencao simples.
+- Tokens visuais e responsividade concentrados em `src/index.css`.
 
